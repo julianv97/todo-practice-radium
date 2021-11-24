@@ -7,8 +7,9 @@ function App() {
   const [todos, setTodos] = useState([
     {
       title: 'Learn about React',
+      completed: false,
       id: Math.floor(Math.random() * 100),
-    }
+    },
   ]);
 
   const addTodo = (todo) => {
@@ -16,14 +17,25 @@ function App() {
   };
 
   const removeTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  }
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const completeTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
 
   return (
     <div className="App">
       <Form addTodo={addTodo} />
       {todos.map((todo) => {
-        return <TodoItem todo={todo} key={todo.id} removeTodo={removeTodo} />;
+        return <TodoItem todo={todo} key={todo.id} removeTodo={removeTodo} completeTodo={completeTodo} />;
       })}
     </div>
   );

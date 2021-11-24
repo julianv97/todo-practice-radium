@@ -1,10 +1,19 @@
 import React from 'react';
 
-const TodoItem = ({ todo, removeTodo }) => {
+const TodoItem = ({ todo, removeTodo, completeTodo }) => {
   return (
-    <div>
-      <h2>{todo.title}</h2>
-      <button onClick={() => removeTodo(todo.id)}>Delete</button>
+    <div className="task-container">
+      {todo ? (
+        <>
+          <input type="checkbox" onClick={() => completeTodo(todo.id)} />
+          <h2 style={todo.completed ? { textDecoration: 'line-through' } : { textDecoration: 'none' }}>
+            {todo.title}
+          </h2>
+          <button onClick={() => removeTodo(todo.id)}>Delete</button>
+        </>
+      ) : (
+        <h2>No todos</h2>
+      )}
     </div>
   );
 };

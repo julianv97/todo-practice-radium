@@ -10,16 +10,17 @@ const Form = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-        title: title,
-        id: Math.floor(Math.random() * 100000000),
-    }
+      title: title,
+      completed: false,
+      id: Math.floor(Math.random() * 100),
+    };
     addTodo(newTodo);
     setTitle('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="New ToDo" value={title} onChange={(e) => handleChange (e)} />
+      <input type="text" placeholder="New ToDo" value={title} onChange={(e) => handleChange(e)} />
       <button type="submit">Add</button>
     </form>
   );
