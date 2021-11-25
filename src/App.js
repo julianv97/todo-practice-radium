@@ -35,6 +35,7 @@ function App() {
       {todos.map((todo) => (
         <TodoItem todo={todo} key={todo.id} removeTodo={removeTodo} completeTodo={completeTodo} />
       ))}
+      {!todos.length && <p>No todos</p>}
     </div>
   );
 }

@@ -12,7 +12,7 @@ const TodoItem = ({ todo, removeTodo, completeTodo }) => {
           <button onClick={() => removeTodo(todo.id)}>Delete</button>
         </>
       ) : (
-        <h2>No todos</h2>
+        ''
       )}
     </div>
   );
