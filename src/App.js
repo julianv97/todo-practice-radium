@@ -23,9 +23,7 @@ function App() {
   const completeTodo = (id) => {
     setTodos(
       todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
+        if (todo.id === id) todo.completed = !todo.completed;
         return todo;
       })
     );
@@ -34,9 +32,9 @@ function App() {
   return (
     <div className="App">
       <Form addTodo={addTodo} />
-      {todos.map((todo) => {
-        return <TodoItem todo={todo} key={todo.id} removeTodo={removeTodo} completeTodo={completeTodo} />;
-      })}
+      {todos.map((todo) => (
+        <TodoItem todo={todo} key={todo.id} removeTodo={removeTodo} completeTodo={completeTodo} />
+      ))}
     </div>
   );
 }
